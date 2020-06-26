@@ -25,6 +25,7 @@ class Desktop(Struct):
         """Open file and create it"""
         try:
             way = './launchers/'
+            desk.name = self.change_name_soft(desk.name)
             way += desk.name
             way += '.desktop'
             file = open(way,"w")
@@ -34,3 +35,15 @@ class Desktop(Struct):
             return True
         except Exception:
             return False
+    
+    def change_name_soft(self, word):
+        """This method can change the filename"""
+        word = word.lower()
+        wdL = list(word)
+        for i in range(wdL.__len__()):
+            if wdL[i] == ' ':
+                wdL[i] = '-'
+        word = ''
+        for i in wdL:
+            word += i
+        return word
