@@ -115,7 +115,7 @@ class CreateDesk:
         # application type
         self.cmb_type = ttk.Combobox(self.frame_data1,width=29,textvariable=StringVar())
         self.cmb_type['font'] = self.font_normal
-        self.cmb_type['values'] = ('Select*','Aplication')
+        self.cmb_type['values'] = ('Select*','Application')
         self.cmb_type.current(0)
         self.cmb_type.pack()
         # categories
