@@ -7,9 +7,9 @@ class Desk:
     execute: str
     path: str
     icon: str
-    terminal: bool
+    terminal: str
     typee: str
-    categories: list
+    categories: str
 
     def __init__(self):
         self.version = 0.0
@@ -18,6 +18,6 @@ class Desk:
         self.execute = ""
         self.path = ""
         self.icon = ""
-        self.terminal = False
+        self.terminal = ""
         self.typee = ""
-        self.categories = []
+        self.categories = ""
