@@ -24,9 +24,8 @@ class Desktop(Struct):
     def create_desktop(self, desk: Desk):
         """Open file and create it"""
         try:
-            way = './launchers/'
             desk.name = self.change_name_soft(desk.name)
-            way += desk.name
+            way = desk.name
             way += '.desktop'
             file = open(way,"w")
             for i in range(10):
