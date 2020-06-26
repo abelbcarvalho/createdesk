@@ -1,4 +1,7 @@
 class Desk:
+    """Desk Model Class"""
+    
+    version: float
     name: str
     comment: str
     execute: str
@@ -9,6 +12,7 @@ class Desk:
     categories: list
 
     def __init__(self):
+        self.version = 0.0
         self.name = ""
         self.execute = ""
         self.path = ""
