@@ -16,4 +16,3 @@ class Struct:
             8: "Type=",
             9: "Categories="
         }
-

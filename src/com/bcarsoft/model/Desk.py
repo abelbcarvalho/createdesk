@@ -14,10 +14,10 @@ class Desk:
     def __init__(self):
         self.version = 0.0
         self.name = ""
+        self.comment = ""
         self.execute = ""
         self.path = ""
         self.icon = ""
         self.terminal = False
         self.typee = ""
         self.categories = []
-

@@ -1,13 +1,16 @@
 from src.com.bcarsoft.model.Desk import Desk
+from src.com.bcarsoft.desktop.Desktop import Desktop
 
 
 class ServiceDesk:
     """Desk Service Class"""
 
     done: bool
+    getdesk: Desktop
 
     def __init__(self):
         self.done = False
+        self.getdesk = Desktop()
 
     # this is the main method
 
@@ -17,6 +20,7 @@ class ServiceDesk:
             return False
         if self.is_none_empty(desk):  # checks there's empty or null strings
             return False
+        return self.getdesk.set_desktop_launch(desk)
     
     # this is the main method
     
@@ -38,4 +42,6 @@ class ServiceDesk:
         if self.done:
             return self.done
         self.done = desk.typee.__len__() == 0 or desk.typee == None
-        return not self.done
+        if self.done:
+            return self.done
+        return self.done

@@ -12,5 +12,5 @@ class Facade:
         self.service = ServiceDesk()
 
     def set_desktop_launch(self, desk: Desk):
-        """It create a new  Desktop launcher file"""
+        """MAIN METHOD It create a new  Desktop launcher file"""
         return self.service.set_desktop_launch(desk)
