@@ -17,7 +17,7 @@ class Desktop(Struct):
         self.data[4] = self.data[4]+desk.execute
         self.data[5] = self.data[5]+desk.path
         self.data[6] = self.data[6]+desk.icon
-        self.data[7] = self.data[7]+desk.terminal.__str__()
+        self.data[7] = self.data[7]+desk.terminal
         self.data[8] = self.data[8]+desk.typee
         self.data[9] = self.data[9]+desk.categories
         return self.create_desktop(desk)
