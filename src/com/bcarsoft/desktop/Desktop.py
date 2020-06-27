@@ -1,5 +1,6 @@
 from src.com.bcarsoft.model.Desk import Desk
 from src.com.bcarsoft.desktop.Struct import Struct
+from os import system
 
 
 class Desktop(Struct):
@@ -31,6 +32,7 @@ class Desktop(Struct):
             for i in range(10):
                 file.write(self.data[i]+'\n')
             file.close()
+            system('chmod 755 '+way)
             return True
         except Exception:
             return False
