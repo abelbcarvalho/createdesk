@@ -77,7 +77,8 @@ class CreateDesk:
         self.cmb_language_label['font'] = self.font_normal
         self.cmb_language_label.pack()
         # application language
-        self.cmb_language = ttk.Combobox(self.frame_data,width=29,textvariable=StringVar())
+        self.cmb_language = ttk.Combobox(self.frame_data,width=29,textvariable=StringVar(),
+                                         state="readonly")
         self.cmb_language['font'] = self.font_normal
         self.cmb_language['values'] = ('Language','Java','Python')
         self.cmb_language.current(0)
@@ -141,7 +142,8 @@ class CreateDesk:
         self.cmb_terminal_label['font'] = self.font_normal
         self.cmb_terminal_label.pack()
         # application terminal
-        self.cmb_terminal = ttk.Combobox(self.frame_data1,width=29,textvariable=StringVar())
+        self.cmb_terminal = ttk.Combobox(self.frame_data1,width=29,textvariable=StringVar(),
+                                         state="readonly")
         self.cmb_terminal['font'] = self.font_normal
         self.cmb_terminal['values'] = ('Select*','True','False')
         self.cmb_terminal.current(0)
@@ -151,7 +153,8 @@ class CreateDesk:
         self.cmb_type_label['font'] = self.font_normal
         self.cmb_type_label.pack()
         # application type
-        self.cmb_type = ttk.Combobox(self.frame_data1,width=29,textvariable=StringVar())
+        self.cmb_type = ttk.Combobox(self.frame_data1,width=29,textvariable=StringVar(),
+                                     state="readonly")
         self.cmb_type['font'] = self.font_normal
         self.cmb_type['values'] = ('Select*','Application')
         self.cmb_type.current(0)
