@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter.filedialog import askopenfilename
 from ..model.Desk import Desk
 from ..facade.Facade import Facade
 from tkinter import messagebox
@@ -8,6 +9,7 @@ from tkinter import messagebox
 class CreateDesk:
     font_title = ('Dialog','15','italic')
     font_normal = ('Dialog','12','normal')
+    font_small = ('Dialog','11','normal')
 
     def __init__(self, master: None):
         # main frame
@@ -27,6 +29,15 @@ class CreateDesk:
         self.frame_data['padx'] = 70
         self.frame_data['pady'] = 4
         self.frame_data.pack()
+        self.frame_open_launcher = Frame(self.frame_main)
+        self.frame_open_launcher['padx'] = 70
+        self.frame_open_launcher.pack()
+        self.frame_open_path = Frame(self.frame_main)
+        self.frame_open_path['padx'] = 70
+        self.frame_open_path.pack()
+        self.frame_open_icon = Frame(self.frame_main)
+        self.frame_open_icon['padx'] = 70
+        self.frame_open_icon.pack()
         self.frame_data1 = Frame(self.frame_main)
         self.frame_data1['padx'] = 70
         self.frame_data1.pack()
@@ -72,32 +83,59 @@ class CreateDesk:
         self.cmb_language.current(0)
         self.cmb_language.pack()
         # laucher way
-        self.entry_laucher_label = Label(self.frame_data, text='Launcher Path*')
+        self.entry_laucher_label = Label(self.frame_open_launcher, text='Launcher Path*')
         self.entry_laucher_label['font'] = self.font_normal
         self.entry_laucher_label.pack()
         # application launcher
-        self.desk_laucher = Entry(self.frame_data)
+        self.desk_laucher = Entry(self.frame_open_launcher)
         self.desk_laucher['font'] = self.font_normal
-        self.desk_laucher['width'] = 30
-        self.desk_laucher.pack()
+        self.desk_laucher['width'] = 26
+        self.desk_laucher.pack(side=LEFT)
+        # button for laucher
+        self.btn_launch = Button(self.frame_open_launcher)
+        self.btn_launch['text'] = 'Open'
+        self.btn_launch['width'] = 2
+        self.btn_launch['font'] = self.font_small
+        self.btn_launch['pady'] = -1
+        self.btn_launch['padx'] = 10
+        self.btn_launch['command'] = self.open_launcher
+        self.btn_launch.pack(side=LEFT)
         # directory path
-        self.entry_path_label = Label(self.frame_data1, text='Directory Path')
+        self.entry_path_label = Label(self.frame_open_path, text='Directory Path')
         self.entry_path_label['font'] = self.font_normal
         self.entry_path_label.pack()
         # application path
-        self.desk_path = Entry(self.frame_data1)
+        self.desk_path = Entry(self.frame_open_path)
         self.desk_path['font'] = self.font_normal
-        self.desk_path['width'] = 30
-        self.desk_path.pack()
+        self.desk_path['width'] = 26
+        self.desk_path.pack(side=LEFT)
+        # button for path
+        self.btn_path = Button(self.frame_open_path)
+        self.btn_path['text'] = 'Open'
+        self.btn_path['width'] = 2
+        self.btn_path['font'] = self.font_small
+        self.btn_path['pady'] = -1
+        self.btn_path['padx'] = 10
+        self.btn_path['command'] = self.open_path
+        self.btn_path.pack(side=LEFT)
         # icon path
-        self.entry_icon_label = Label(self.frame_data1, text='Icon Path')
+        self.entry_icon_label = Label(self.frame_open_icon, text='Icon Path')
         self.entry_icon_label['font'] = self.font_normal
         self.entry_icon_label.pack()
         # application icon
-        self.desk_icon = Entry(self.frame_data1)
+        self.desk_icon = Entry(self.frame_open_icon)
         self.desk_icon['font'] = self.font_normal
-        self.desk_icon['width'] = 30
-        self.desk_icon.pack()
+        self.desk_icon['width'] = 26
+        self.desk_icon.pack(side=LEFT)
+        # button for icon
+        self.btn_icon = Button(self.frame_open_icon)
+        self.btn_icon['text'] = 'Open'
+        self.btn_icon['width'] = 2
+        self.btn_icon['font'] = self.font_small
+        self.btn_icon['pady'] = -1
+        self.btn_icon['padx'] = 10
+        self.btn_icon['command'] = self.open_path
+        self.btn_icon.pack(side=LEFT)
         # terminal boolean
         self.cmb_terminal_label = Label(self.frame_data1, text='Terminal*')
         self.cmb_terminal_label['font'] = self.font_normal
@@ -170,3 +208,21 @@ class CreateDesk:
                 messagebox.showerror('Error With Creation','Desktop Launcher Not Created')
         except ValueError:
             messagebox.showerror('Invalid Data','An Error Was Found')
+    
+    def open_launcher(self):
+        """Inserts path launcher"""
+        file = askopenfilename()
+        self.desk_laucher.delete(0, END)
+        self.desk_laucher.insert(0, file)
+    
+    def open_path(self):
+        """Inserts path directory"""
+        file = askopenfilename()
+        self.desk_path.delete(0, END)
+        self.desk_path.insert(0, file)
+    
+    def open_icon(self):
+        """Inserts path directory"""
+        file = askopenfilename()
+        self.desk_path.delete(0, END)
+        self.desk_path.insert(0, file)
