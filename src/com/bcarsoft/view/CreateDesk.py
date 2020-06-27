@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import askdirectory
 from ..model.Desk import Desk
 from ..facade.Facade import Facade
 from tkinter import messagebox
@@ -135,7 +136,7 @@ class CreateDesk:
         self.btn_icon['font'] = self.font_small
         self.btn_icon['pady'] = -1
         self.btn_icon['padx'] = 10
-        self.btn_icon['command'] = self.open_path
+        self.btn_icon['command'] = self.open_icon
         self.btn_icon.pack(side=LEFT)
         # terminal boolean
         self.cmb_terminal_label = Label(self.frame_data1, text='Terminal*')
@@ -214,18 +215,18 @@ class CreateDesk:
     
     def open_launcher(self):
         """Inserts path launcher"""
-        file = askopenfilename()
+        file = askopenfilename(title="Select Executable")
         self.desk_laucher.delete(0, END)
         self.desk_laucher.insert(0, file)
     
     def open_path(self):
         """Inserts path directory"""
-        file = askopenfilename()
+        file = askdirectory(title="Select Path")
         self.desk_path.delete(0, END)
         self.desk_path.insert(0, file)
     
     def open_icon(self):
         """Inserts path directory"""
-        file = askopenfilename()
-        self.desk_path.delete(0, END)
-        self.desk_path.insert(0, file)
+        file = askopenfilename(title="Select Icon")
+        self.desk_icon.delete(0, END)
+        self.desk_icon.insert(0, file)
