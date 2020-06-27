@@ -15,7 +15,7 @@ class CreateDesk:
     def __init__(self, master: None):
         # main frame
         self.frame_main = Frame(master)
-        self.frame_main.pack()
+        self.frame_main.pack(side=LEFT)
         # head frame
         self.frame_head = Frame(self.frame_main)
         self.frame_head['padx'] = 70
@@ -178,6 +178,30 @@ class CreateDesk:
         self.btn_create['font'] = self.font_normal
         self.btn_create['command'] = self.create_desk
         self.btn_create.pack()
+        # another frame to show all valid categories ----------------------------------
+        self.frame_cat = Frame(master)
+        self.frame_cat['padx'] = 70
+        self.frame_cat.pack(side=RIGHT)
+        # label with information
+        self.lab_info_cat = Label(self.frame_cat)
+        self.lab_info_cat['text'] = """
+            Valid Categories\n
+            1: AudioVideo\n
+            2: Audio\n
+            3: Video\n
+            4: Development\n
+            5: Education\n
+            6: Game\n
+            7: Graphics\n
+            8: Network\n
+            9: Office\n
+            10: Science\n
+            11: Settings\n
+            12: System\n
+            13: Utility\n
+        """
+        self.lab_info_cat['font'] = self.font_small
+        self.lab_info_cat.pack(side=LEFT)
     
     def create_desk(self):
         """This method takes info and done the operation"""
