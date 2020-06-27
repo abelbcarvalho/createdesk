@@ -1,5 +1,6 @@
 from src.com.bcarsoft.model.Desk import Desk
 from src.com.bcarsoft.desktop.Desktop import Desktop
+from src.com.bcarsoft.service.AuxService import AuxService
 
 
 class ServiceDesk:
@@ -21,7 +22,9 @@ class ServiceDesk:
                 return False
             if self.is_none_empty(desk):  # checks there's empty or null strings
                 return False
-            if not self.is_category_valid(desk):
+            if not self.is_category_valid_basic(desk):
+                return False
+            if not self.is_category_valid_advenced(desk):
                 return False
             return self.getdesk.set_desktop_launch(desk)
         except ValueError:
@@ -45,12 +48,29 @@ class ServiceDesk:
             return self.done
         return self.done
     
-    def is_category_valid(self, desk: Desk):
+    def is_category_valid_basic(self, desk: Desk):
         """This method checks if category is valid"""
         word = list(desk.categories)
         if not word[0].isalpha():
             return False
+        if not word[word.__len__()-1].__eq__(';'):
+            return False
         for i in word:
             if not i.isalpha() and not i.__eq__(';'):
+                return False
+        return True
+    
+    def is_category_valid_advenced(self, desk: Desk):
+        """This method checks if the caregories are really valids"""
+        auxs = AuxService()
+        lword = auxs.take_sami_common(desk.categories)
+        for i in lword:
+            b = 1
+            key = False
+            while b < 14:
+                if lword[i].__eq__(auxs.cate[b]):
+                    key = True
+                b += 1
+            if not key:
                 return False
         return True
