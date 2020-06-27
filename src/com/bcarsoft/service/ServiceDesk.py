@@ -21,6 +21,8 @@ class ServiceDesk:
                 return False
             if self.is_none_empty(desk):  # checks there's empty or null strings
                 return False
+            if not self.is_category_valid(desk):
+                return False
             return self.getdesk.set_desktop_launch(desk)
         except ValueError:
             return False
@@ -42,3 +44,13 @@ class ServiceDesk:
         if self.done:
             return self.done
         return self.done
+    
+    def is_category_valid(self, desk: Desk):
+        """This method checks if category is valid"""
+        word = list(desk.categories)
+        if not word[0].isalpha():
+            return False
+        for i in word:
+            if not i.isalpha() and not i.__eq__(';'):
+                return False
+        return True

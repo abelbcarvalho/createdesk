@@ -168,6 +168,7 @@ class CreateDesk:
         self.desk_categories = Entry(self.frame_data1)
         self.desk_categories['font'] = self.font_normal
         self.desk_categories['width'] = 30
+        self.desk_categories.bind("<KeyRelease>", self.fix_category)
         self.desk_categories.pack()
         # frame button ---------------------------------------------------------------
         # create button
@@ -230,3 +231,19 @@ class CreateDesk:
         file = askopenfilename(title="Select Icon")
         self.desk_icon.delete(0, END)
         self.desk_icon.insert(0, file)
+    
+    def fix_category(self, event):
+        """Event for checks the key released"""
+        word = self.desk_categories.get()
+        if not word[0].isalpha():
+            self.desk_categories.delete(0, END)
+            return
+        word = list(word)
+        for i in range(word.__len__()):
+            if not word[i].isalpha() and not word[i].__eq__(';'):
+                word[i] = ';'
+        ct = ''
+        for i in word:
+            ct += i
+        self.desk_categories.delete(0, END)
+        self.desk_categories.insert(0, ct)
