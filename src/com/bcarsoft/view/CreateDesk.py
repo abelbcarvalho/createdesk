@@ -218,6 +218,7 @@ class CreateDesk:
                 desk.execute = 'python3 ' + self.desk_laucher.get()
             else:
                 desk.execute = self.desk_laucher.get()
+            desk.path = self.desk_path
             desk.icon = self.desk_icon.get()
             if self.cmb_terminal.current() == 0:
                 messagebox.showerror('Error With Terminal','You Don\'t Specified Terminal')

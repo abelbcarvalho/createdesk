@@ -68,7 +68,7 @@ class ServiceDesk:
             b = 1
             key = False
             while b < 14:
-                if lword[i].__eq__(auxs.cate[b]):
+                if i.__eq__(auxs.cate[b]):
                     key = True
                 b += 1
             if not key:
