@@ -1,6 +1,7 @@
 from src.com.bcarsoft.model.Desk import Desk
 from src.com.bcarsoft.desktop.Struct import Struct
 from os import system
+from getpass import getuser
 
 
 class Desktop(Struct):
@@ -26,7 +27,7 @@ class Desktop(Struct):
         """Open file and create it"""
         try:
             desk.name = self.change_name_soft(desk.name)
-            way = desk.name
+            way = '/home/'+getuser()+'/programs/createdesk/launchers/'+desk.name
             way += '.desktop'
             file = open(way,"w")
             for i in range(10):
