@@ -27,7 +27,7 @@ class Desktop(Struct):
         """Open file and create it"""
         try:
             desk.name = self.change_name_soft(desk.name)
-            way = '/home/'+getuser()+'/programs/createdesk/launchers/'+desk.name
+            way = '/usr/share/applications/'+desk.name
             way += '.desktop'
             file = open(way,"w")
             for i in range(10):
